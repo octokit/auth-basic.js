@@ -12,10 +12,9 @@
 - [`createBasicAuth(token)` options](#createbasicauthtoken-options)
 - [`auth()` options](#auth-options)
 - [Authentication object](#authentication-object)
-  - [Authentication object](#authentication-object-1)
-    - [Personal access token authentication](#personal-access-token-authentication)
-    - [OAuth access token authentication](#oauth-access-token-authentication)
-    - [Basic authentication result](#basic-authentication-result)
+  * [Personal access token authentication](#personal-access-token-authentication)
+  * [OAuth access token authentication](#oauth-access-token-authentication)
+  * [Basic authentication result](#basic-authentication-result)
 - [`auth.hook(request, route, options)` or `auth.hook(request, options)`](#authhookrequest-route-options-or-authhookrequest-options)
 - [Implementation details](#implementation-details)
 - [License](#license)
@@ -324,8 +323,6 @@ createAppAuth({
 
 ## Authentication object
 
-### Authentication object
-
 There are three possible results
 
 1. **A personal access token authentication**  
@@ -335,7 +332,7 @@ There are three possible results
 3. **Basic authentication**  
    `auth({type: 'basic'})`
 
-#### Personal access token authentication
+### Personal access token authentication
 
 <table width="100%">
   <thead align=left>
@@ -421,7 +418,7 @@ There are three possible results
   </tbody>
 </table>
 
-#### OAuth access token authentication
+### OAuth access token authentication
 
 <table width="100%">
   <thead align=left>
@@ -518,7 +515,7 @@ There are three possible results
   </tbody>
 </table>
 
-#### Basic authentication result
+### Basic authentication result
 
 <table width="100%">
   <thead align=left>
