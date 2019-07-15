@@ -4,6 +4,10 @@
 
 > Basic authentication for browsers and Node.js
 
+[![@latest](https://img.shields.io/npm/v/@octokit/auth-basic.svg)](https://www.npmjs.com/package/@octokit/auth-basic)
+[![Build Status](https://travis-ci.com/octokit/auth-basic.js.svg?branch=master)](https://travis-ci.com/octokit/auth-basic.js)
+[![Greenkeeper](https://badges.greenkeeper.io/octokit/auth-basic.js.svg)](https://greenkeeper.io/)
+
 `@octokit/auth-basic` is implementing one of [GitHub’s authentication strategies](https://github.com/octokit/auth.js): authenticating using username and password.
 
 <!-- toc -->
