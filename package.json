@@ -1,0 +1,108 @@
+{
+  "name": "@octokit/auth-basic",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0-development",
+  "description": "Basic authentication for browsers and Node.js",
+  "scripts": {
+    "build": "pack build",
+    "test": "jest --coverage"
+  },
+  "repository": "https://github.com/octokit/auth-basic.js",
+  "keywords": [
+    "github",
+    "octokit",
+    "authentication",
+    "api"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octokit/auth-basic.js/issues"
+  },
+  "homepage": "https://github.com/octokit/auth-basic.js#readme",
+  "dependencies": {
+    "@octokit/request": "^5.0.1",
+    "@octokit/request-error": "^1.0.4",
+    "@types/btoa-lite": "^1.0.0",
+    "btoa-lite": "^1.0.0",
+    "universal-user-agent": "^2.1.0"
+  },
+  "devDependencies": {
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.4.0",
+    "@pika/plugin-build-web": "^0.4.0",
+    "@pika/plugin-bundle-web": "^0.4.0",
+    "@pika/plugin-ts-standard-pkg": "^0.4.0",
+    "@types/fetch-mock": "^7.3.1",
+    "@types/jest": "^24.0.13",
+    "@types/lolex": "^3.1.1",
+    "@types/node-fetch": "^2.3.7",
+    "fetch-mock": "^7.3.3",
+    "jest": "^24.8.0",
+    "lolex": "^4.1.0",
+    "node-fetch": "^2.6.0",
+    "pika-plugin-unpkg-field": "^1.1.0",
+    "semantic-release": "^15.13.12",
+    "semantic-release-plugin-update-version-in-files": "^1.0.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-bundle-web",
+        {
+          "browser": true
+        }
+      ],
+      [
+        "pika-plugin-unpkg-field"
+      ]
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "dist-web/*",
+            "dist-node/*",
+            "*/version.*"
+          ]
+        }
+      ]
+    ]
+  }
+}
