@@ -323,9 +323,9 @@ createAppAuth({
   </tbody>
 </table>
 
-## Authentication object
+## `auth()` result
 
-There are three possible results
+There are three possible results that the async `auth()` method can resolve to
 
 1. **A personal access token authentication**  
    `auth({type: 'token'})` and `basic.token.clientId` / `basic.token.clientSecret` _not_ passed as strategy options.
