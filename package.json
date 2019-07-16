@@ -27,10 +27,10 @@
     "@octokit/request-error": "^1.0.4",
     "@types/btoa-lite": "^1.0.0",
     "btoa-lite": "^1.0.0",
-    "universal-user-agent": "^2.1.0"
+    "universal-user-agent": "^3.0.0"
   },
   "devDependencies": {
-    "@pika/pack": "^0.3.7",
+    "@pika/pack": "^0.4.0",
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-web": "^0.4.0",
     "@pika/plugin-bundle-web": "^0.4.0",
