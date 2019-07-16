@@ -1,5 +1,3 @@
-# 🚧 This library is work in progress
-
 # auth-basic.js
 
 > Basic authentication for browsers and Node.js
@@ -16,9 +14,9 @@
 - [`createBasicAuth(token)` options](#createbasicauthtoken-options)
 - [`auth()` options](#auth-options)
 - [Authentication object](#authentication-object)
-  * [Personal access token authentication](#personal-access-token-authentication)
-  * [OAuth access token authentication](#oauth-access-token-authentication)
-  * [Basic authentication result](#basic-authentication-result)
+  - [Personal access token authentication](#personal-access-token-authentication)
+  - [OAuth access token authentication](#oauth-access-token-authentication)
+  - [Basic authentication result](#basic-authentication-result)
 - [`auth.hook(request, route, options)` or `auth.hook(request, options)`](#authhookrequest-route-options-or-authhookrequest-options)
 - [Implementation details](#implementation-details)
 - [License](#license)
