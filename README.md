@@ -1,6 +1,6 @@
 # auth-basic.js
 
-> Basic authentication for browsers and Node.js
+> GitHub API Basic authentication for browsers and Node.js
 
 [![@latest](https://img.shields.io/npm/v/@octokit/auth-basic.svg)](https://www.npmjs.com/package/@octokit/auth-basic)
 [![Build Status](https://travis-ci.com/octokit/auth-basic.js.svg?branch=master)](https://travis-ci.com/octokit/auth-basic.js)
