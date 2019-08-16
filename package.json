@@ -14,6 +14,7 @@
     "github",
     "octokit",
     "authentication",
+    "basic",
     "api"
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
