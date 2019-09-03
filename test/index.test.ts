@@ -6,7 +6,6 @@ import lolex from "lolex";
 import { createBasicAuth } from "../src/index";
 import { TokenAuthentication } from "../src/types";
 
-let clock: lolex.Clock;
 type FetchCall = [string, RequestInit];
 
 // We have to define the same `POST /authorizations` route multiple times.
@@ -24,14 +23,14 @@ beforeAll(() => {
   // A timestamp is added to the default token note, e.g.
   // "octokit 2019-07-04 4feornbt361". Lolex mocks the Date class so
   // `new Date()` always returns `new Date(0)` by default.
-  clock = lolex.install({
+  const clock = lolex.install({
     now: 0,
     toFake: ["Date"]
   });
-});
 
-beforeEach(() => {
-  clock.reset();
+  beforeEach(() => {
+    clock.reset();
+  });
 });
 
 afterAll(() => {
