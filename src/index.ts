@@ -25,7 +25,7 @@ export function createBasicAuth(options: StrategyOptions) {
     request:
       strategyOptions.request ||
       request.defaults({
-        baseUrl: "https://github.com",
+        baseUrl: "https://api.github.com",
         headers: {
           "user-agent": `octokit-auth-basic.js/${VERSION} ${getUserAgent()}`
         }
