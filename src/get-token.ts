@@ -1,13 +1,18 @@
 import btoa from "btoa-lite";
-import { request as Request } from "@octokit/request";
 
 import { requestWith2Fa } from "./request-with-2fa";
-import { Endpoint, State, AuthOptions, TokenAuthentication } from "./types";
+import {
+  AuthOptions,
+  EndpointOptions,
+  RequestInterface,
+  State,
+  TokenAuthentication
+} from "./types";
 
 export async function getToken(
   state: State,
   authOptions: AuthOptions,
-  request?: typeof Request
+  request?: RequestInterface
 ): Promise<TokenAuthentication> {
   if (state.token && !authOptions.refresh) {
     return state.token;
@@ -49,7 +54,7 @@ export async function getToken(
           client_secret: state.strategyOptions.token.clientSecret
         }
       : null
-  ) as Endpoint;
+  ) as EndpointOptions;
 
   const {
     data: { id, token }

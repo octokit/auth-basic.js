@@ -1,13 +1,12 @@
-import { request as Request } from "@octokit/request";
 import { RequestError } from "@octokit/request-error";
 
 import { isSmsTriggeringRoute } from "./is-sms-triggering-route";
-import { State, Endpoint, AnyResponse } from "./types";
+import { State, EndpointOptions, RequestInterface, AnyResponse } from "./types";
 
 export async function requestWith2Fa(
   state: State,
-  options: Endpoint,
-  customRequest?: typeof Request
+  options: EndpointOptions,
+  customRequest?: RequestInterface
 ): Promise<AnyResponse> {
   const request = customRequest || state.request;
 
