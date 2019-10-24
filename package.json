@@ -26,6 +26,7 @@
   "dependencies": {
     "@octokit/request": "^5.0.1",
     "@octokit/request-error": "^1.0.4",
+    "@octokit/types": "file:../types.ts",
     "@types/btoa-lite": "^1.0.0",
     "btoa-lite": "^1.0.0",
     "universal-user-agent": "^4.0.0"
