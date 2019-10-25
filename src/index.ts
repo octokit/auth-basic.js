@@ -3,10 +3,10 @@ import { request } from "@octokit/request";
 
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { StrategyOptions } from "./types";
+import { AuthInterface, StrategyOptions } from "./types";
 import { VERSION } from "./version";
 
-export function createBasicAuth(options: StrategyOptions) {
+export function createBasicAuth(options: StrategyOptions): AuthInterface {
   ["username", "password", "on2Fa"].forEach((option: string) => {
     if (!options.hasOwnProperty(option)) {
       throw new Error(`[@octokit/auth-basic] ${option} option is required`);
