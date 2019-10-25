@@ -6,8 +6,6 @@ import lolex from "lolex";
 import { createBasicAuth } from "../src/index";
 import { TokenAuthentication } from "../src/types";
 
-type FetchCall = [string, RequestInit];
-
 // We have to define the same `POST /authorizations` route multiple times.
 // In order to make that possible, the `overwriteRoutes` option has to be configured
 // See http://www.wheresrhys.co.uk/fetch-mock/#usageconfiguration

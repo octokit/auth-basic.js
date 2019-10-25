@@ -1,7 +1,7 @@
 import { isAuthorizationRoute } from "./is-authorization-route";
-import { Endpoint } from "./types";
+import { EndpointOptions } from "./types";
 
-export function isSmsTriggeringRoute(options: Endpoint): Boolean {
+export function isSmsTriggeringRoute(options: EndpointOptions): Boolean {
   return (
     ["PATCH", "PUT", "POST"].includes(options.method) &&
     isAuthorizationRoute(options.url)
