@@ -3,10 +3,12 @@ import { request } from "@octokit/request";
 
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { AuthInterface, StrategyOptions } from "./types";
+import { StrategyInterface, StrategyOptions } from "./types";
 import { VERSION } from "./version";
 
-export function createBasicAuth(options: StrategyOptions): AuthInterface {
+export const createBasicAuth: StrategyInterface = function createBasicAuth(
+  options: StrategyOptions
+) {
   ["username", "password", "on2Fa"].forEach((option: string) => {
     if (!options.hasOwnProperty(option)) {
       throw new Error(`[@octokit/auth-basic] ${option} option is required`);
@@ -35,4 +37,4 @@ export function createBasicAuth(options: StrategyOptions): AuthInterface {
   return Object.assign(auth.bind(null, state), {
     hook: hook.bind(null, state)
   });
-}
+};
