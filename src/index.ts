@@ -3,8 +3,19 @@ import { request } from "@octokit/request";
 
 import { auth } from "./auth";
 import { hook } from "./hook";
-import { StrategyInterface, StrategyOptions } from "./types";
+import {
+  StrategyInterface,
+  StrategyOptions,
+  AuthOptions,
+  Authentication
+} from "./types";
 import { VERSION } from "./version";
+
+export type Types = {
+  StrategyOptions: StrategyOptions;
+  AuthOptions: AuthOptions;
+  Authentication: Authentication;
+};
 
 export const createBasicAuth: StrategyInterface = function createBasicAuth(
   options: StrategyOptions
