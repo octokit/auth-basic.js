@@ -42,7 +42,7 @@
     "@types/node-fetch": "^2.3.7",
     "fetch-mock": "^8.0.0",
     "jest": "^24.8.0",
-    "lolex": "^5.0.0",
+    "lolex": "^6.0.0",
     "node-fetch": "^2.6.0",
     "semantic-release": "^17.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.0.0",
