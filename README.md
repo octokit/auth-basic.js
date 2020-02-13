@@ -13,7 +13,7 @@
 - [Usage](#usage)
 - [`createBasicAuth(token)` options](#createbasicauthtoken-options)
 - [`auth()` options](#auth-options)
-- [Authentication object](#authentication-object)
+- [`auth()` result](#auth-result)
   - [Personal access token authentication](#personal-access-token-authentication)
   - [OAuth access token authentication](#oauth-access-token-authentication)
   - [Basic authentication result](#basic-authentication-result)
