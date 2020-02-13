@@ -41,7 +41,7 @@
     "@types/lolex": "^5.1.0",
     "@types/node-fetch": "^2.3.7",
     "fetch-mock": "^8.0.0",
-    "jest": "^24.8.0",
+    "jest": "^25.1.0",
     "lolex": "^6.0.0",
     "node-fetch": "^2.6.0",
     "semantic-release": "^17.0.0",
