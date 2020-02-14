@@ -20,7 +20,9 @@ export type Types = {
 export const createBasicAuth: StrategyInterface = function createBasicAuth(
   options: StrategyOptions
 ) {
-  console.warn(`[@octokit/auth-basic] Basic authentication has been deprecated. See https://github.com/octokit/auth-basic.js/#deprecation`)
+  console.warn(
+    `[@octokit/auth-basic] Basic authentication has been deprecated. See https://github.com/octokit/auth-basic.js/#deprecation`
+  );
 
   ["username", "password", "on2Fa"].forEach((option: string) => {
     if (!options.hasOwnProperty(option)) {
