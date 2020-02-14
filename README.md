@@ -1,3 +1,13 @@
+<a name="deprecation"></a>
+
+# ⚠️ Deprecation warning
+
+Authentication using a username and password has been deprecated by GitHub on February 14, 2020.
+
+It will be removed entirely on November 13, 2020. Brownouts are scheduled for September 30, 2020 and October 28, 2020.
+
+See the [official deprecation announcement](https://developer.github.com/changes/2020-02-14-deprecating-password-auth/) for more details.
+
 # auth-basic.js
 
 > GitHub API Basic authentication for browsers and Node.js

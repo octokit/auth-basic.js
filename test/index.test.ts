@@ -12,6 +12,9 @@ import { TokenAuthentication } from "../src/types";
 fetchMock.config.overwriteRoutes = false;
 
 beforeAll(() => {
+  // Do not log deprecation message
+  global.console.warn = jest.fn()
+
   // Math.random is used to generate the token fingerprint,
   // unless `token.fingerprint` option was passed. The fingerprint is
   // calculated using `Math.random().toString(36).substr(2)`, so the
@@ -36,7 +39,7 @@ afterAll(() => {
   Math.random.mockReset();
 });
 
-test("README example (token authentication)", async () => {
+test.only("README example (token authentication)", async () => {
   const matcher: MockMatcherFunction = (url, { body, headers }) => {
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(JSON.parse(String(body))).toStrictEqual({
@@ -85,6 +88,9 @@ test("README example (token authentication)", async () => {
     id: 123,
     username: "octocat"
   });
+
+  // @ts-ignore
+  console.log(console.warn.mock.calls)
 });
 
 test("README example (basic authentication)", async () => {
