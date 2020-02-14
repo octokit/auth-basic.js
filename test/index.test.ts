@@ -13,7 +13,7 @@ fetchMock.config.overwriteRoutes = false;
 
 beforeAll(() => {
   // Do not log deprecation message
-  global.console.warn = jest.fn()
+  global.console.warn = jest.fn();
 
   // Math.random is used to generate the token fingerprint,
   // unless `token.fingerprint` option was passed. The fingerprint is
@@ -39,7 +39,7 @@ afterAll(() => {
   Math.random.mockReset();
 });
 
-test.only("README example (token authentication)", async () => {
+test("README example (token authentication)", async () => {
   const matcher: MockMatcherFunction = (url, { body, headers }) => {
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(JSON.parse(String(body))).toStrictEqual({
@@ -90,7 +90,10 @@ test.only("README example (token authentication)", async () => {
   });
 
   // @ts-ignore
-  console.log(console.warn.mock.calls)
+  const [[deprecationMessage]] = console.warn.mock.calls;
+  expect(deprecationMessage).toEqual(
+    "[@octokit/auth-basic] Basic authentication has been deprecated. See https://github.com/octokit/auth-basic.js/#deprecation"
+  );
 });
 
 test("README example (basic authentication)", async () => {
