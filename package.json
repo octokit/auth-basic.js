@@ -7,6 +7,9 @@
   "description": "GitHub API Basic authentication for browsers and Node.js",
   "scripts": {
     "build": "pika build",
+    "lint": "prettier --check '{src,test}/**/*.{ts,md}' README.md package.json",
+    "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' README.md package.json",
+    "pretest": "npm run -s lint",
     "test": "jest --coverage"
   },
   "repository": "https://github.com/octokit/auth-basic.js",
@@ -44,6 +47,7 @@
     "jest": "^25.1.0",
     "lolex": "^6.0.0",
     "node-fetch": "^2.6.0",
+    "prettier": "^1.19.1",
     "semantic-release": "^17.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.0.0",
     "ts-jest": "^25.1.0",
