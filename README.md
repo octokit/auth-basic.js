@@ -21,7 +21,7 @@ See the [official deprecation announcement](https://developer.github.com/changes
 <!-- toc -->
 
 - [Usage](#usage)
-- [`createBasicAuth(token)` options](#createbasicauthtoken-options)
+- [`createBasicAuth()` options](#createbasicauth-options)
 - [`auth()` options](#auth-options)
 - [`auth()` result](#auth-result)
   - [Personal access token authentication](#personal-access-token-authentication)
@@ -125,7 +125,7 @@ const auth = createBasicAuth({
 });
 ```
 
-## `createBasicAuth(token)` options
+## `createBasicAuth()` options
 
 <table width="100%">
   <thead align=left>
