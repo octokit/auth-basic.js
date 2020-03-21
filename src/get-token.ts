@@ -6,7 +6,7 @@ import {
   EndpointOptions,
   RequestInterface,
   State,
-  TokenAuthentication
+  TokenAuthentication,
 } from "./types";
 
 export async function getToken(
@@ -24,9 +24,7 @@ export async function getToken(
   const timestamp = new Date().toISOString().substr(0, 10);
   const fingerprintDefault = state.strategyOptions.token.note
     ? undefined
-    : Math.random()
-        .toString(36)
-        .substr(2);
+    : Math.random().toString(36).substr(2);
   const fingerprint =
     state.strategyOptions.token.fingerprint || fingerprintDefault;
   const note =
@@ -41,23 +39,23 @@ export async function getToken(
       method: "POST",
       url: "/authorizations",
       headers: {
-        authorization: basicAuthorization
+        authorization: basicAuthorization,
       },
       note,
       note_url: noteUrl,
-      scopes
+      scopes,
     },
     fingerprint ? { fingerprint } : null,
     state.strategyOptions.token.clientId
       ? {
           client_id: state.strategyOptions.token.clientId,
-          client_secret: state.strategyOptions.token.clientSecret
+          client_secret: state.strategyOptions.token.clientSecret,
         }
       : null
   ) as EndpointOptions;
 
   const {
-    data: { id, token }
+    data: { id, token },
   } = await requestWith2Fa(state, options, request);
 
   state.token = {
@@ -65,7 +63,7 @@ export async function getToken(
     tokenType: "oauth",
     id,
     token,
-    username: state.strategyOptions.username
+    username: state.strategyOptions.username,
   };
 
   return state.token;

@@ -7,7 +7,7 @@ import {
   StrategyInterface,
   StrategyOptions,
   AuthOptions,
-  Authentication
+  Authentication,
 } from "./types";
 import { VERSION } from "./version";
 
@@ -32,7 +32,7 @@ export const createBasicAuth: StrategyInterface = function createBasicAuth(
 
   const strategyOptions = Object.assign(
     {
-      token: {}
+      token: {},
     },
     options
   );
@@ -44,12 +44,12 @@ export const createBasicAuth: StrategyInterface = function createBasicAuth(
       request.defaults({
         baseUrl: "https://api.github.com",
         headers: {
-          "user-agent": `octokit-auth-basic.js/${VERSION} ${getUserAgent()}`
-        }
-      })
+          "user-agent": `octokit-auth-basic.js/${VERSION} ${getUserAgent()}`,
+        },
+      }),
   };
 
   return Object.assign(auth.bind(null, state), {
-    hook: hook.bind(null, state)
+    hook: hook.bind(null, state),
   });
 };

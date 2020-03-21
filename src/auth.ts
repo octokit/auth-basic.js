@@ -6,7 +6,7 @@ import {
   AuthOptions,
   State,
   Authentication,
-  BasicAuthentication
+  BasicAuthentication,
 } from "./types";
 
 export async function auth(
@@ -25,8 +25,8 @@ export async function auth(
         method: "PATCH",
         url: "/authorizations",
         headers: {
-          authorization: `basic ${credentials}`
-        }
+          authorization: `basic ${credentials}`,
+        },
       });
     } catch (error) {
       if (error.status !== 404) {
@@ -41,7 +41,7 @@ export async function auth(
         type: "basic",
         username: state.strategyOptions.username,
         password: state.strategyOptions.password,
-        credentials
+        credentials,
       },
       state.totp ? { totp: state.totp } : null
     ) as BasicAuthentication;

@@ -2,7 +2,7 @@ const PATHS = [
   "/authorizations",
   "/authorizations/clients/:client_id",
   "/authorizations/clients/:client_id/:fingerprint",
-  "/authorizations/:authorization_id"
+  "/authorizations/:authorization_id",
 ];
 
 // CREDIT: Simon Grondin (https://github.com/SGrondin)
@@ -14,10 +14,10 @@ function routeMatcher(paths: string[]) {
       "/repos/:owner/:repo/collaborators/:username"
   ] */
 
-  const regexes = paths.map(p =>
+  const regexes = paths.map((p) =>
     p
       .split("/")
-      .map(c => (c.startsWith(":") ? "(?:.+?)" : c))
+      .map((c) => (c.startsWith(":") ? "(?:.+?)" : c))
       .join("/")
   );
   // 'regexes' would contain:
@@ -26,7 +26,7 @@ function routeMatcher(paths: string[]) {
       '/repos/(?:.+?)/(?:.+?)/collaborators/(?:.+?)'
   ] */
 
-  const regex = `^(?:${regexes.map(r => `(?:${r})`).join("|")})[^/]*$`;
+  const regex = `^(?:${regexes.map((r) => `(?:${r})`).join("|")})[^/]*$`;
   // 'regex' would contain:
   /*
     ^(?:(?:\/orgs\/(?:.+?)\/invitations)|(?:\/repos\/(?:.+?)\/(?:.+?)\/collaborators\/(?:.+?)))[^\/]*$

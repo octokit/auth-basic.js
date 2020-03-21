@@ -74,15 +74,15 @@ const auth = createBasicAuth({
   async on2Fa() {
     // prompt user for the one-time password retrieved via SMS or authenticator app
     return prompt("Two-factor authentication Code:");
-  }
+  },
 });
 
 const tokenAuthentication = await auth({
-  type: "token"
+  type: "token",
 });
 
 const basicAuthentication = await auth({
-  type: "basic"
+  type: "basic",
 });
 ```
 
@@ -95,7 +95,7 @@ const { hook } = createBasicAuth({
   async on2Fa() {
     // prompt user for the one-time password retrieved via SMS or authenticator app
     return prompt("Two-factor authentication Code:");
-  }
+  },
 });
 const requestWithAuth = request.defaults({ request: { hook } });
 
@@ -117,11 +117,11 @@ const auth = createBasicAuth({
     noteUrl: "https://github.com/octokit/auth.js#basic-auth",
     fingerprint: "abc4567",
     clientId: "1234567890abcdef1234",
-    clientSecret: "1234567890abcdef1234567890abcdef12345678"
+    clientSecret: "1234567890abcdef1234567890abcdef12345678",
   },
   request: request.defaults({
-    baseUrl: "https://ghe.my-company.com/api/v3"
-  })
+    baseUrl: "https://ghe.my-company.com/api/v3",
+  }),
 });
 ```
 
@@ -280,8 +280,8 @@ createAppAuth({
   clientId: 123,
   clientSecret: "secret",
   request: request.defaults({
-    baseUrl: "https://ghe.my-company.com/api/v3"
-  })
+    baseUrl: "https://ghe.my-company.com/api/v3",
+  }),
 });
 ```
 
@@ -622,8 +622,8 @@ Or it can be passed as option to [`request()`](https://github.com/octokit/reques
 ```js
 const requestWithAuth = request.defaults({
   request: {
-    hook: auth.hook
-  }
+    hook: auth.hook,
+  },
 });
 
 const { data: authorizations } = await requestWithAuth("GET /authorizations");

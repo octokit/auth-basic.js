@@ -14,8 +14,8 @@ export async function requestWith2Fa(
     if (state.totp) {
       options = Object.assign({}, options, {
         headers: Object.assign({}, options.headers, {
-          "x-github-otp": state.totp
-        })
+          "x-github-otp": state.totp,
+        }),
       });
     }
 
@@ -46,7 +46,7 @@ export async function requestWith2Fa(
           401,
           {
             headers: error.headers,
-            request: error.request
+            request: error.request,
           }
         );
       }
@@ -58,7 +58,7 @@ export async function requestWith2Fa(
     if (hasSmsDelivery && !isSmsTriggeringRoute(options)) {
       try {
         await request("PATCH /authorizations", {
-          headers: options.headers
+          headers: options.headers,
         });
       } catch (error) {
         // we expect a 401
@@ -74,8 +74,8 @@ export async function requestWith2Fa(
         state,
         Object.assign({}, options, {
           headers: Object.assign({}, options.headers, {
-            "x-github-otp": totp
-          })
+            "x-github-otp": totp,
+          }),
         }),
         customRequest
       );

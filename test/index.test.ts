@@ -26,7 +26,7 @@ beforeAll(() => {
   // `new Date()` always returns `new Date(0)` by default.
   const clock = lolex.install({
     now: 0,
-    toFake: ["Date"]
+    toFake: ["Date"],
   });
 
   beforeEach(() => {
@@ -46,19 +46,19 @@ test("README example (token authentication)", async () => {
       fingerprint: "4feornbt361",
       note: "octokit 1970-01-01 4feornbt361",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     expect(headers).toStrictEqual({
       accept: "application/vnd.github.v3+json",
       authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
       "content-type": "application/json; charset=utf-8",
-      "user-agent": "test"
+      "user-agent": "test",
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const mock = fetchMock.sandbox().postOnce(matcher, responseBody);
@@ -71,12 +71,12 @@ test("README example (token authentication)", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   const authentication = await auth();
@@ -86,7 +86,7 @@ test("README example (token authentication)", async () => {
     token: "1234567890abcdef1234567890abcdef12345678",
     tokenType: "oauth",
     id: 123,
-    username: "octocat"
+    username: "octocat",
   });
 
   // @ts-ignore
@@ -101,7 +101,7 @@ test("README example (basic authentication)", async () => {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
     "content-length": 0,
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matcher1: MockMatcherFunction = (url, { body, headers }) => {
@@ -113,7 +113,7 @@ test("README example (basic authentication)", async () => {
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -121,12 +121,12 @@ test("README example (basic authentication)", async () => {
   const response1 = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
   const response2 = {
     status: 404,
-    headers: {}
+    headers: {},
   };
 
   const mock = fetchMock
@@ -136,11 +136,11 @@ test("README example (basic authentication)", async () => {
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const auth = createBasicAuth({
@@ -150,7 +150,7 @@ test("README example (basic authentication)", async () => {
       return "123456";
     },
 
-    request: requestMock
+    request: requestMock,
   });
 
   const authentication = await auth({ type: "basic" });
@@ -161,7 +161,7 @@ test("README example (basic authentication)", async () => {
     username: "octocat",
     password: "secret",
     totp: "123456",
-    credentials: "b2N0b2NhdDpzZWNyZXQ="
+    credentials: "b2N0b2NhdDpzZWNyZXQ=",
   });
 });
 
@@ -172,19 +172,19 @@ test("auth({type: 'token'})", async () => {
       fingerprint: "4feornbt361",
       note: "octokit 1970-01-01 4feornbt361",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     expect(headers).toStrictEqual({
       accept: "application/vnd.github.v3+json",
       authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
       "content-type": "application/json; charset=utf-8",
-      "user-agent": "test"
+      "user-agent": "test",
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const auth = createBasicAuth({
@@ -195,12 +195,12 @@ test("auth({type: 'token'})", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: fetchMock.sandbox().postOnce(matcher, responseBody)
-      }
-    })
+        fetch: fetchMock.sandbox().postOnce(matcher, responseBody),
+      },
+    }),
   });
 
   const authentication = await auth({ type: "token" });
@@ -210,7 +210,7 @@ test("auth({type: 'token'})", async () => {
     token: "1234567890abcdef1234567890abcdef12345678",
     tokenType: "oauth",
     id: 123,
-    username: "octocat"
+    username: "octocat",
   });
 });
 
@@ -221,7 +221,7 @@ test("auth({type: 'basic'}) without 2Fa enabled", async () => {
       accept: "application/vnd.github.v3+json",
       authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
       "content-length": 0,
-      "user-agent": "test"
+      "user-agent": "test",
     });
     return true;
   };
@@ -234,12 +234,12 @@ test("auth({type: 'basic'}) without 2Fa enabled", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: fetchMock.sandbox().patchOnce(matcher, { status: 404 })
-      }
-    })
+        fetch: fetchMock.sandbox().patchOnce(matcher, { status: 404 }),
+      },
+    }),
   });
 
   const authentication = await auth({ type: "basic" });
@@ -248,7 +248,7 @@ test("auth({type: 'basic'}) without 2Fa enabled", async () => {
     type: "basic",
     username: "octocat",
     password: "secret",
-    credentials: "b2N0b2NhdDpzZWNyZXQ="
+    credentials: "b2N0b2NhdDpzZWNyZXQ=",
   });
 });
 
@@ -257,13 +257,13 @@ test("2fa", async () => {
     fingerprint: "4feornbt361",
     note: "octokit 1970-01-01 4feornbt361",
     note_url: "https://github.com/octokit/auth-basic.js#readme",
-    scopes: []
+    scopes: [],
   };
   const expectedRequestHeaders = {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
     "content-type": "application/json; charset=utf-8",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matcher1: MockMatcherFunction = (url, { body, headers }) => {
@@ -277,7 +277,7 @@ test("2fa", async () => {
     expect(JSON.parse(String(body))).toStrictEqual(expectedRequestBody);
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -285,12 +285,12 @@ test("2fa", async () => {
   const response1 = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
   const response2 = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const auth = createBasicAuth({
@@ -301,15 +301,15 @@ test("2fa", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
         fetch: fetchMock
           .sandbox()
           .postOnce(matcher1, response1)
-          .postOnce(matcher2, response2)
-      }
-    })
+          .postOnce(matcher2, response2),
+      },
+    }),
   });
 
   const authentication = await auth();
@@ -319,7 +319,7 @@ test("2fa", async () => {
     token: "1234567890abcdef1234567890abcdef12345678",
     tokenType: "oauth",
     id: 123,
-    username: "octocat"
+    username: "octocat",
   });
 });
 
@@ -328,13 +328,13 @@ test("2fa with invalid time-based one-time password", async () => {
     fingerprint: "4feornbt361",
     note: "octokit 1970-01-01 4feornbt361",
     note_url: "https://github.com/octokit/auth-basic.js#readme",
-    scopes: []
+    scopes: [],
   };
   const expectedRequestHeaders = {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
     "content-type": "application/json; charset=utf-8",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matcher1: MockMatcherFunction = (url, { body, headers }) => {
@@ -348,7 +348,7 @@ test("2fa with invalid time-based one-time password", async () => {
     expect(JSON.parse(String(body))).toStrictEqual(expectedRequestBody);
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -356,14 +356,14 @@ test("2fa with invalid time-based one-time password", async () => {
   const response1 = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
   const response2 = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
 
   const auth = createBasicAuth({
@@ -374,15 +374,15 @@ test("2fa with invalid time-based one-time password", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
         fetch: fetchMock
           .sandbox()
           .postOnce(matcher1, response1)
-          .postOnce(matcher2, response2)
-      }
-    })
+          .postOnce(matcher2, response2),
+      },
+    }),
   });
 
   try {
@@ -403,17 +403,17 @@ test("empty token options", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
         fetch: fetchMock
           .sandbox()
           .postOnce("https://api.github.com/authorizations", {
             id: 123,
-            token: "1234567890abcdef1234567890abcdef12345678"
-          })
-      }
-    })
+            token: "1234567890abcdef1234567890abcdef12345678",
+          }),
+      },
+    }),
   });
 
   await auth();
@@ -428,17 +428,17 @@ test("server error", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
         fetch: fetchMock.sandbox().postOnce(
           "https://api.github.com/authorizations",
           new Response("Internal Server error", {
-            status: 500
+            status: 500,
           })
-        )
-      }
-    })
+        ),
+      },
+    }),
   });
 
   try {
@@ -459,7 +459,7 @@ test("request error", async () => {
     // @ts-ignore
     request() {
       throw new Error("Request error");
-    }
+    },
   });
 
   try {
@@ -475,7 +475,7 @@ test("on2FA parameter missing", async () => {
     // @ts-ignore
     createBasicAuth({
       username: "octocat",
-      password: "secret"
+      password: "secret",
     });
   }).toThrow();
 });
@@ -487,7 +487,7 @@ test("username parameter missing", async () => {
       password: "secret",
       on2Fa() {
         return "123456";
-      }
+      },
     });
   }).toThrow();
 });
@@ -499,7 +499,7 @@ test("password parameter missing", async () => {
       username: "octocat",
       on2Fa() {
         return "123456";
-      }
+      },
     });
   }).toThrow();
 });
@@ -511,19 +511,19 @@ test("token should be cached and not re-created", async () => {
       fingerprint: "4feornbt361",
       note: "octokit 1970-01-01 4feornbt361",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     expect(headers).toStrictEqual({
       accept: "application/vnd.github.v3+json",
       authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
       "content-type": "application/json; charset=utf-8",
-      "user-agent": "test"
+      "user-agent": "test",
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const mock = fetchMock.sandbox().postOnce(matcher, responseBody);
@@ -536,12 +536,12 @@ test("token should be cached and not re-created", async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   const authentication1 = await auth();
@@ -557,7 +557,7 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
   const expectedRequestHeaders = {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matcher: MockMatcherFunction = (url, { body, headers }) => {
@@ -569,7 +569,7 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -577,7 +577,7 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "654321"
+      "x-github-otp": "654321",
     });
     return true;
   };
@@ -585,8 +585,8 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
   const responseOtpRequired = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
   const response = [{ id: 123 }];
 
@@ -600,11 +600,11 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const on2FaMock = jest
@@ -615,7 +615,7 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
   const { hook } = createBasicAuth({
     username: "octocat",
     password: "secret",
-    on2Fa: on2FaMock
+    on2Fa: on2FaMock,
   });
 
   const { status: status1, data: data1 } = await hook(
@@ -648,16 +648,16 @@ test("repeated auth.hook(request, 'GET /authorizations') with expiring 2FA code"
 test('auth({type: "basic"}) with 500 server error', async () => {
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
       fetch: fetchMock.sandbox().patchOnce(
         "https://api.github.com/authorizations",
         new Response("Oops", {
-          status: 500
+          status: 500,
         })
-      )
-    }
+      ),
+    },
   });
 
   const auth = createBasicAuth({
@@ -667,7 +667,7 @@ test('auth({type: "basic"}) with 500 server error', async () => {
       return "123456";
     },
 
-    request: requestMock
+    request: requestMock,
   });
 
   try {
@@ -681,7 +681,7 @@ test('auth.hook(request, "GET /user") with 2Fa', async () => {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
     "content-type": "application/json; charset=utf-8",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matchCreateToken: MockMatcherFunction = (url, { body, headers }) => {
@@ -690,7 +690,7 @@ test('auth.hook(request, "GET /user") with 2Fa', async () => {
       fingerprint: "4feornbt361",
       note: "octokit 1970-01-01 4feornbt361",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     expect(headers).toStrictEqual(expectedCreateTokenRequestHeaders);
 
@@ -706,11 +706,11 @@ test('auth.hook(request, "GET /user") with 2Fa', async () => {
       fingerprint: "4feornbt361",
       note: "octokit 1970-01-01 4feornbt361",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     expect(headers).toStrictEqual({
       ...expectedCreateTokenRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
 
     return true;
@@ -721,24 +721,24 @@ test('auth.hook(request, "GET /user") with 2Fa', async () => {
     expect(headers).toStrictEqual({
       accept: "application/vnd.github.v3+json",
       authorization: "token 1234567890abcdef1234567890abcdef12345678",
-      "user-agent": "test"
+      "user-agent": "test",
     });
 
     return true;
   };
 
   const responseGetUser = {
-    id: 1
+    id: 1,
   };
   const responseTokenCreated = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
   const responseOtpRequired = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; app"
-    }
+      "x-github-otp": "required; app",
+    },
   });
 
   const mock = fetchMock
@@ -749,17 +749,17 @@ test('auth.hook(request, "GET /user") with 2Fa', async () => {
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const { hook } = createBasicAuth({
     username: "octocat",
     password: "secret",
-    on2Fa: () => `123456`
+    on2Fa: () => `123456`,
   });
 
   const { data } = await hook(requestMock, "GET /user");
@@ -773,7 +773,7 @@ test('auth.hook(request, "GET /authorizations") with 2Fa & SMS delivery', async 
   const expectedRequestHeaders = {
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matchGetAuthorizations: MockMatcherFunction = (
@@ -792,7 +792,7 @@ test('auth.hook(request, "GET /authorizations") with 2Fa & SMS delivery', async 
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "content-length": 0
+      "content-length": 0,
     });
     return true;
   };
@@ -804,7 +804,7 @@ test('auth.hook(request, "GET /authorizations") with 2Fa & SMS delivery', async 
     expect(url).toEqual("https://api.github.com/authorizations");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -812,8 +812,8 @@ test('auth.hook(request, "GET /authorizations") with 2Fa & SMS delivery', async 
   const responseOtpRequired = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; sms"
-    }
+      "x-github-otp": "required; sms",
+    },
   });
   const response = [{ id: 123 }];
 
@@ -825,17 +825,17 @@ test('auth.hook(request, "GET /authorizations") with 2Fa & SMS delivery', async 
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const { hook } = createBasicAuth({
     username: "octocat",
     password: "secret",
-    on2Fa: () => "123456"
+    on2Fa: () => "123456",
   });
 
   const { data } = await hook(requestMock, "GET /authorizations");
@@ -852,30 +852,30 @@ test('auth.hook(request, "GET /authorizations") with 500 error on SMS delivery t
       new Response("Unauthorized", {
         status: 401,
         headers: {
-          "x-github-otp": "required; sms"
-        }
+          "x-github-otp": "required; sms",
+        },
       })
     )
     .patchOnce(
       "https://api.github.com/authorizations",
       new Response("Oops", {
-        status: 500
+        status: 500,
       })
     );
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const { hook } = createBasicAuth({
     username: "octocat",
     password: "secret",
-    on2Fa: () => "123456"
+    on2Fa: () => "123456",
   });
 
   try {
@@ -887,7 +887,7 @@ test('auth.hook(request, "GET /authorizations") with 500 error on SMS delivery t
 test('auth({type:"basic"}) with 500 on TOTP-authenticated request', async () => {
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
       fetch: fetchMock
@@ -897,17 +897,17 @@ test('auth({type:"basic"}) with 500 on TOTP-authenticated request', async () => 
           new Response("Unauthorized", {
             status: 401,
             headers: {
-              "x-github-otp": "required; app"
-            }
+              "x-github-otp": "required; app",
+            },
           })
         )
         .patchOnce(
           "https://api.github.com/authorizations",
           new Response("Oops", {
-            status: 500
+            status: 500,
           })
-        )
-    }
+        ),
+    },
   });
 
   const auth = createBasicAuth({
@@ -917,7 +917,7 @@ test('auth({type:"basic"}) with 500 on TOTP-authenticated request', async () => 
       return "123456";
     },
 
-    request: requestMock
+    request: requestMock,
   });
 
   try {
@@ -936,13 +936,13 @@ test('auth({type:"token"}) with custom token settings', async () => {
       note_url: "https://example.com/my-custom-token-note-url",
       scopes: ["repo", "notifications"],
       client_id: "01234567890123456789",
-      client_secret: "0123456789012345678901234567890123456789"
+      client_secret: "0123456789012345678901234567890123456789",
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const mock = fetchMock.sandbox().postOnce(matcher, responseBody);
@@ -959,16 +959,16 @@ test('auth({type:"token"}) with custom token settings', async () => {
       noteUrl: "https://example.com/my-custom-token-note-url",
       fingerprint: "fingerprint",
       clientId: "01234567890123456789",
-      clientSecret: "0123456789012345678901234567890123456789"
+      clientSecret: "0123456789012345678901234567890123456789",
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   const authentication = await auth();
@@ -978,7 +978,7 @@ test('auth({type:"token"}) with custom token settings', async () => {
     token: "1234567890abcdef1234567890abcdef12345678",
     tokenType: "oauth",
     id: 123,
-    username: "octocat"
+    username: "octocat",
   });
 });
 
@@ -991,19 +991,19 @@ test('auth({type:"token"}) with token note conflict', async () => {
       note_url: "https://example.com/my-custom-token-note-url",
       scopes: ["repo", "notifications"],
       client_id: "01234567890123456789",
-      client_secret: "0123456789012345678901234567890123456789"
+      client_secret: "0123456789012345678901234567890123456789",
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const mock = fetchMock.sandbox().postOnce(
     "https://api.github.com/authorizations",
     new Response("Validation Failed", {
-      status: 422
+      status: 422,
     })
   );
 
@@ -1015,16 +1015,16 @@ test('auth({type:"token"}) with token note conflict', async () => {
     },
     token: {
       note: "My custom note",
-      fingerprint: "fingerprint"
+      fingerprint: "fingerprint",
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   try {
@@ -1043,7 +1043,7 @@ test('auth({type:"token", refresh: true})', async () => {
   };
   const responseBody1 = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const matcher2: MockMatcherFunction = (url, { body, headers }) => {
@@ -1053,7 +1053,7 @@ test('auth({type:"token", refresh: true})', async () => {
   };
   const responseBody2 = {
     id: 456,
-    token: "87654321fedcba0987654321fedcba0987654321"
+    token: "87654321fedcba0987654321fedcba0987654321",
   };
 
   const mock = fetchMock
@@ -1069,16 +1069,16 @@ test('auth({type:"token", refresh: true})', async () => {
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   const authentication1 = (await auth({
-    type: "token"
+    type: "token",
   })) as TokenAuthentication;
 
   Math.random = jest.fn().mockReturnValue(0.456);
@@ -1087,7 +1087,7 @@ test('auth({type:"token", refresh: true})', async () => {
 
   const authentication2 = (await auth({
     type: "token",
-    refresh: true
+    refresh: true,
   })) as TokenAuthentication;
 
   expect(authentication1.token).toEqual(
@@ -1105,7 +1105,7 @@ test('auth.hook(request, "PATCH /authorizations/123") with 2Fa & SMS delivery', 
     accept: "application/vnd.github.v3+json",
     authorization: "basic b2N0b2NhdDpzZWNyZXQ=",
     "content-type": "application/json; charset=utf-8",
-    "user-agent": "test"
+    "user-agent": "test",
   };
 
   const matchPatchAuthorization: MockMatcherFunction = (
@@ -1124,7 +1124,7 @@ test('auth.hook(request, "PATCH /authorizations/123") with 2Fa & SMS delivery', 
     expect(url).toEqual("https://api.github.com/authorizations/123");
     expect(headers).toStrictEqual({
       ...expectedRequestHeaders,
-      "x-github-otp": "123456"
+      "x-github-otp": "123456",
     });
     return true;
   };
@@ -1132,8 +1132,8 @@ test('auth.hook(request, "PATCH /authorizations/123") with 2Fa & SMS delivery', 
   const responseOtpRequired = new Response("Unauthorized", {
     status: 401,
     headers: {
-      "x-github-otp": "required; sms"
-    }
+      "x-github-otp": "required; sms",
+    },
   });
   const response = [{ id: 123 }];
 
@@ -1144,21 +1144,21 @@ test('auth.hook(request, "PATCH /authorizations/123") with 2Fa & SMS delivery', 
 
   const requestMock = request.defaults({
     headers: {
-      "user-agent": "test"
+      "user-agent": "test",
     },
     request: {
-      fetch: mock
-    }
+      fetch: mock,
+    },
   });
 
   const { hook } = createBasicAuth({
     username: "octocat",
     password: "secret",
-    on2Fa: () => "123456"
+    on2Fa: () => "123456",
   });
 
   const { data } = await hook(requestMock, "PATCH /authorizations/123", {
-    add_scopes: ["repo"]
+    add_scopes: ["repo"],
   });
 
   expect(data).toStrictEqual(response);
@@ -1172,13 +1172,13 @@ test("If token.note is set, do not default fingerprint to a random string to avo
     expect(JSON.parse(String(body))).toStrictEqual({
       note: "My custom note",
       note_url: "https://github.com/octokit/auth-basic.js#readme",
-      scopes: []
+      scopes: [],
     });
     return true;
   };
   const responseBody = {
     id: 123,
-    token: "1234567890abcdef1234567890abcdef12345678"
+    token: "1234567890abcdef1234567890abcdef12345678",
   };
 
   const mock = fetchMock.sandbox().postOnce(matcher, responseBody);
@@ -1190,16 +1190,16 @@ test("If token.note is set, do not default fingerprint to a random string to avo
       throw new Error("Should not ask for 2FA code");
     },
     token: {
-      note: "My custom note"
+      note: "My custom note",
     },
     request: request.defaults({
       headers: {
-        "user-agent": "test"
+        "user-agent": "test",
       },
       request: {
-        fetch: mock
-      }
-    })
+        fetch: mock,
+      },
+    }),
   });
 
   const authentication = await auth();
@@ -1209,6 +1209,6 @@ test("If token.note is set, do not default fingerprint to a random string to avo
     token: "1234567890abcdef1234567890abcdef12345678",
     tokenType: "oauth",
     id: 123,
-    username: "octocat"
+    username: "octocat",
   });
 });
