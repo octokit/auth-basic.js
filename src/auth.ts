@@ -36,17 +36,15 @@ export async function auth(
       // we are expecting a 404 error
     }
 
-    return (
-      Object.assign(
-        {
-          type: "basic",
-          username: state.strategyOptions.username,
-          password: state.strategyOptions.password,
-          credentials,
-        },
-        state.totp ? { totp: state.totp } : null
-      ) as BasicAuthentication
-    );
+    return Object.assign(
+      {
+        type: "basic",
+        username: state.strategyOptions.username,
+        password: state.strategyOptions.password,
+        credentials,
+      },
+      state.totp ? { totp: state.totp } : null
+    ) as BasicAuthentication;
   }
 
   return getToken(state, options);

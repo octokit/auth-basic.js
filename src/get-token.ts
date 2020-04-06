@@ -34,26 +34,25 @@ export async function getToken(
     state.strategyOptions.token.noteUrl ||
     "https://github.com/octokit/auth-basic.js#readme";
 
-  const options =
-    Object.assign(
-      {
-        method: "POST",
-        url: "/authorizations",
-        headers: {
-          authorization: basicAuthorization,
-        },
-        note,
-        note_url: noteUrl,
-        scopes,
+  const options = Object.assign(
+    {
+      method: "POST",
+      url: "/authorizations",
+      headers: {
+        authorization: basicAuthorization,
       },
-      fingerprint ? { fingerprint } : null,
-      state.strategyOptions.token.clientId
-        ? {
-            client_id: state.strategyOptions.token.clientId,
-            client_secret: state.strategyOptions.token.clientSecret,
-          }
-        : null
-    ) as EndpointOptions;
+      note,
+      note_url: noteUrl,
+      scopes,
+    },
+    fingerprint ? { fingerprint } : null,
+    state.strategyOptions.token.clientId
+      ? {
+          client_id: state.strategyOptions.token.clientId,
+          client_secret: state.strategyOptions.token.clientSecret,
+        }
+      : null
+  ) as EndpointOptions;
 
   const {
     data: { id, token },
