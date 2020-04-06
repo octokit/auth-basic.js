@@ -1077,18 +1077,20 @@ test('auth({type:"token", refresh: true})', async () => {
     }),
   });
 
-  const authentication1 = (await auth({
-    type: "token",
-  })) as TokenAuthentication;
+  const authentication1 =
+    (await auth({
+      type: "token",
+    })) as TokenAuthentication;
 
   Math.random = jest.fn().mockReturnValue(0.456);
   // < Math.random().toString(36).substr(2)
   // > gez4w97rxp
 
-  const authentication2 = (await auth({
-    type: "token",
-    refresh: true,
-  })) as TokenAuthentication;
+  const authentication2 =
+    (await auth({
+      type: "token",
+      refresh: true,
+    })) as TokenAuthentication;
 
   expect(authentication1.token).toEqual(
     "1234567890abcdef1234567890abcdef12345678"
