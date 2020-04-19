@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/octokit/auth-basic.js#readme",
   "dependencies": {
-    "@octokit/request": "^5.3.0",
+    "@octokit/request": "^5.4.2",
     "@octokit/request-error": "^2.0.0",
     "@octokit/types": "^2.0.0",
     "@types/btoa-lite": "^1.0.0",
