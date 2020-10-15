@@ -40,11 +40,11 @@ See the [official deprecation announcement](https://developer.github.com/changes
 Browsers
 </th><td width=100%>
 
-Load `@octokit/auth-basic` directly from [cdn.pika.dev](https://cdn.pika.dev)
+Load `@octokit/auth-basic` directly from [cdn.skypack.dev](https://cdn.skypack.dev)
 
 ```html
 <script type="module">
-  import { createBasicAuth } from "https://cdn.pika.dev/@octokit/auth-basic";
+  import { createBasicAuth } from "https://cdn.skypack.dev/@octokit/auth-basic";
 </script>
 ```
 
